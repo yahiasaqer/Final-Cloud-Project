@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const mysql = require('mysql');
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb+srv://yahia:1234@cluster0.vq7pp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://yahia:1234@cluster0.vq7pp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;  //acquire the connection
 
 
