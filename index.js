@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8000;
+const port = process.env.PORT;
 const db = require('./config/mongoose');
 const task = require('./models/task');
 const employee = require('./models/employee');
