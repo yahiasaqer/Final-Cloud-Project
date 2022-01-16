@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="/css/emp.css">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success user">
+   
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item listi">
+          <a class="nav-link linkl" href="/admin/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item listi">
+          <a class="nav-link linkl" href="/admin/employees">Employees</a>
+        </li>
+        <li class="nav-item listi active">
+          <a class="nav-link linkl" href="/admin/transactions">Transactions</a>
+        </li>
+        <li class="nav-item listi">
+            <a class="nav-link linkl" href="/admin/history">History</a>
+          </li>
+        <li class="nav-item listi">
+          <a class="nav-link linkl" href="/admin/attendence">Attendence</a>
+        </li>
+
+        <li class="nav-item listi">
+          <a class="nav-link linkl" href="/">Sign out</a>
+        </li>
+        
+        
+      </ul>
+      
+    </div>
+  </nav>
+  <div class="icon-bar">
+    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a> 
+    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a> 
+    <a href="#" class="google"><i class="fab fa-google-plus-g"></i></a> 
+    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a> 
+  </div>
+
+  
+  <div class="row mt-5">
+    <div class="col-md-6 m-auto ">
+      <div class="card card-body form-login">
+        <h1 class="text-center mb-3">
+          <i class="fas fa-male"></i> Add New Transactions
+        </h1>
+        <%-include('messages')%>
+        <form action="/admin/transactions" method="POST">
+        <div>
+          
+        </div>
+        <div class="form-group">
+            <label for="tid">Transaction ID</label>
+            <input
+              type="number"
+              id="tid"
+              name="tid"
+              class="form-control"
+              placeholder="Transaction ID Goes Here"
+              value="<%= typeof email != 'undefined' ? email : '' %>"
+            />
+          </div>  
+          <div class="form-group">
+              <label for="eid">Employee ID</label>
+              <input
+                type="number"
+                id="eid"
+                name="eid"
+                class="form-control"
+                placeholder="Employee ID Goes Here"
+                value="<%= typeof email != 'undefined' ? email : '' %>"
+              />
+            </div>
+            
+                <div class="form-group">
+                      <label for="month">Month</label>
+                      <input
+                        type="month"
+                        id="month"
+                        name="month"
+                        class="form-control"
+                        placeholder="Enter Month"
+                        value="<%= typeof name != 'undefined' ? name : '' %>"
+                        required
+                        />
+                    </div>
+                       
+          
+          <button type="submit" class="btn btn-success btn-block">
+            Add
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
