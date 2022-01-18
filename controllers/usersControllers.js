@@ -9,7 +9,7 @@ const attendence = require('../models/attendence');
 const pdfMake = require('pdfmake/build/pdfmake.js');
 const pdfFonts = require('pdfmake/build/vfs_fonts.js');
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-let dept = ['R&D','Production','Marketing','Human Resource','Finance and Accounting'];
+let dept = ['Faculty of Nursing','Faculty of medicine','Faculty of engineering','Faculty of science','Faculty of IT'];
 
 let go = {};
 let em = {}
@@ -100,7 +100,7 @@ module.exports.home = function(req,res){
         console.log('post-emp');
         console.log(docs);
         em = docs[0];
-        let dept = ['R&D','Production','Marketing','Human Resource','Finance and Accounting']
+        let dept = ['Faculty of Nursing','Faculty of medicine','Faculty of engineering','Faculty of science','Faculty of IT']
         let emp = docs[0];
         emp.dname = dept[docs[0].dno-1]
         emp.view = 0;
@@ -257,7 +257,7 @@ module.exports.pay_slip = function(req,res){
                                 table: {
                                     widths: ['33%', '33%', '33%'],
                                     body: [
-                                        [[{text:[{text:'Transaction Id:\t',bold:true},`${trans.tid}`]}], [{text:[{text:'Emp Id:\t',bold:true},`${go.eid}`]}], [{text:[{text:'Month:\t',bold:true},`${trans.month}\n\n`]}]],
+                                        [[{text:[{text:'Transaction ID:\t',bold:true},`${trans.tid}`]}], [{text:[{text:'Employee ID:\t',bold:true},`${go.eid}`]}], [{text:[{text:'Month:\t',bold:true},`${trans.month}\n\n`]}]],
                                         [[{text:[{lineHeight: 1.4,text:'Name:\n',bold:true},{text:`${emp.name}`}]}], [{text:[{lineHeight: 1.4,text:'Department:\n',bold:true},{text:`${dept[emp.dno-1]}`}]}], [{text:[{lineHeight: 1.4,text:'Designation:\n',bold:true},{text:`${emp.designation}`}]}]],
                                         
                                     ]
@@ -286,7 +286,7 @@ module.exports.pay_slip = function(req,res){
                                     [
                                         {
                                         
-                                          text :'Earnings(Rs.)',
+                                          text :'Earnings(USD)',
                                           alignment : 'center',
                                           bold : true
                                     },
@@ -298,28 +298,28 @@ module.exports.pay_slip = function(req,res){
                                       },
                                       {
                                         lineHeight: 1.4,
-                                        text :`DA \t\t\t\t :\t ${sal.da}`
+                                        text :`Dearness Allowance \t\t\t\t :\t ${sal.da}`
                                       },
                                       {
                                         lineHeight: 1.4,
-                                        text :`HRA \t\t\t  :\t ${sal.hra}`
+                                        text :`House Rent Allowance \t\t\t  :\t ${sal.hra}`
                                       },
                                       {
                                         lineHeight: 1.4,
-                                        text :`MA \t\t\t\t:\t ${sal.ma}`
+                                        text :`Medical Allowance \t\t\t\t:\t ${sal.ma}`
                                       }
                                     ]
                                     ],
                                     [
                                     {
                                         
-                                      text :'Deductions(Rs.)',
+                                      text :'Deductions(USD)',
                                       alignment : 'center',
                                       bold : true
                                     },
                                     {
                                        lineHeight: 1.4,
-                                       text :`\nLeaves \t\t  :\t ${de.leave} * ${leave} = ${de.lamt}`
+                                       text :`\nLeavings \t\t  :\t ${de.leave} * ${leave} = ${de.lamt}`
                                     },
                                     {
                                        lineHeight: 1.4,
@@ -327,11 +327,11 @@ module.exports.pay_slip = function(req,res){
                                     },
                                     {
                                        lineHeight: 1.4,
-                                       text :`PF   \t\t\t\t:\t ${de.pf}`
+                                       text :`Provident Fund   \t\t\t\t:\t ${de.pf}`
                                     },
                                     {
                                        lineHeight: 1.4,
-                                       text :`WF  \t\t\t\t:\t ${de.wf}`
+                                       text :`Welfare fund   \t\t\t\t:\t ${de.wf}`
                                     },
                                     {
                                        lineHeight: 1.4,
@@ -362,10 +362,10 @@ module.exports.pay_slip = function(req,res){
                         {
                             columns:[
                                 {
-                                    text : `Gross Pay(Rs.)\t:\t ${sal.total}`
+                                    text : `Gross Payment(USD)\t:\t ${sal.total}`
                                 },
                                 {
-                                    text : `Total Deduction(Rs.)\t:\t ${de.total}`
+                                    text : `Total Deduction(USD)\t:\t ${de.total}`
                                 }
                                 
                                 ]
@@ -373,7 +373,7 @@ module.exports.pay_slip = function(req,res){
                         ,
                         {
                             margin :[0,20,0,0],
-                            text: `Net Pay(Rs.)\t:\t ${at.amount}`,
+                            text: `Net Payment(USD)\t:\t ${at.amount}`,
                             bold : true
                         }
                        
@@ -424,6 +424,8 @@ module.exports.pay_slip = function(req,res){
 
 });
 }
+
+
 
 
 
