@@ -26,7 +26,7 @@ module.exports.home = function(req,res){
         console.log('post-emp');
         console.log(docs);
         em = docs[0];
-        let dept = ['R&D','Production','Marketing','Human Resource','Finance and Accounting']
+        let dept = ['Faculty of Nursing','Faculty of medicine','Faculty of engineering','Faculty of science','Faculty of IT']
         let emp = docs[0];
         emp.dname = dept[docs[0].dno-1]
         emp.view = 1;
@@ -70,7 +70,7 @@ module.exports.payment = function(req,res){
     transactions.find({ eid: go.eid}, function (err, docs) {
         console.log('history');
         console.log(docs);
-        let dept = ['R&D','Production','Marketing','Human Resource','Finance and Accounting']
+        let dept = ['Faculty of Nursing','Faculty of medicine','Faculty of engineering','Faculty of science','Faculty of IT']
         let emp = docs;
         function compare( a, b ) {
             if ( a.month > b.month ){
